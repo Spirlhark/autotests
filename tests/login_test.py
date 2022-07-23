@@ -4,7 +4,7 @@ from pages.SignInPage import SignIn
 from tests_utils.session import Session
 from resorses.pars_values import getDataFromConfig
 
-driver = vc.Chrome(use_subprocess=True)
+# driver = vc.Chrome(use_subprocess=True)
 
 # print(base_url())
 # print(value_email())

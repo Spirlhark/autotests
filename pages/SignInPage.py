@@ -8,7 +8,14 @@ class SignIn(object):
     locator_dictionary = {
         "go": (By.XPATH, '/html/body/header/div[1]/div[5]/ul/li[2]/a'),
         "email": (By.XPATH, '//*[@id="identifierId"]'),
-        "password": (By.CSS_SELECTOR, '#password > div.aCsJod.oJeWuf > div > div.Xb9hP > input'),
+        # "password": (By.CSS_SELECTOR, '#password > div.aCsJod.oJeWuf > div > div.Xb9hP > input'),
+        # "password": (By.XPATH, "//attribute::*[contains(., 'current-password')]/.."),
+        # "password": (By.XPATH, "//attribute::*[contains(., 'YPqjbf')]/.."),
+        # "password": (By.XPATH, "//attribute::*[contains(., 'Введите пароль')]/.."),
+        # "password": (By.XPATH, '//*[@id="password"]/div[1]/div/div[1]/div'),
+        # "password": (By.NAME, "password"),
+        # "password": (By.XPATH, "/html/body/div[1]/div[1]/div[2]/div/div[2]/div/div/div[2]/div/div[1]/div/form/span/section/div/div/div[1]/div[1]/div/div/div/div/div[1]/div/div[1]/input"),
+        # "password": (By.XPATH, '//*[contains(@input,"password")]'),
         "signin_button_E": (By.XPATH, '//*[@id="identifierNext"]/div/button/span'),
         "signin_button_P": (By.XPATH, '//*[@id="passwordNext"]/div/button/span')
         }

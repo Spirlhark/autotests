@@ -43,6 +43,7 @@ class Session:
             options = cls._get_chrome_options()
             # driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
             driver = vc.Chrome(use_subprocess=True)
+            # driver = vc.Chrome(headless=True)
         elif cls.browser == 'firefox':
             driver = webdriver.Firefox(executable_path=GeckoDriverManager().install(),
                                             firefox_profile=cls._get_firefox_profile())
@@ -61,7 +62,8 @@ class Session:
             options = cls._get_chrome_options()
             options.add_argument('--headless')
             # driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
-            driver =  vc.Chrome(use_subprocess=True)
+            driver = vc.Chrome(use_subprocess=True)
+            # driver = vc.Chrome(headless=True)
         elif cls.browser == "safari":
             driver = webdriver.Safari()
         else:
@@ -89,7 +91,8 @@ class Session:
 
     @classmethod
     def open(cls, url):
-        return cls._driver.get(url)
+        pass
+        # return cls._driver.get(url)
 
     @classmethod
     def quit(cls):
