@@ -8,7 +8,7 @@ class SignIn(object):
     locator_dictionary = {
         "go": (By.XPATH, '/html/body/header/div[1]/div[5]/ul/li[2]/a'),
         "email": (By.XPATH, '//*[@id="identifierId"]'),
-        # "password": (By.CSS_SELECTOR, '#password > div.aCsJod.oJeWuf > div > div.Xb9hP > input'),
+        "password": (By.CSS_SELECTOR, '#password > div.aCsJod.oJeWuf > div > div.Xb9hP > input'),
         # "password": (By.XPATH, "//attribute::*[contains(., 'current-password')]/.."),
         # "password": (By.XPATH, "//attribute::*[contains(., 'YPqjbf')]/.."),
         # "password": (By.XPATH, "//attribute::*[contains(., 'Введите пароль')]/.."),
