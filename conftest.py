@@ -55,14 +55,14 @@ def pytest_sessionfinish(session):
         with open('{}/{}'.format(report_dir, 'environment.properties'), 'w') as _f:
             data = '\n'.join([f'{variable}={value}' for variable, value in env_details.items()])
             _f.write(data)
-    # Add executor in allure report
-        if 'CI' in os.environ:
-            executor = dict(name='Bitbucket',
-                            type="CI",
-                            buildUrl=os.environ['BITBUCKET_GIT_HTTP_ORIGIN']+'/addon/pipelines/home#!/results/'+os.environ['BITBUCKET_BUILD_NUMBER'],
-                            buildName=os.environ['BITBUCKET_BRANCH'])
-            with open('{}/{}'.format(report_dir, 'executor.json'), 'w') as _f:
-                json.dump(executor, _f)
+    ## Add executor in allure report
+    #     if 'CI' in os.environ:
+    #         executor = dict(name='Bitbucket',
+    #                         type="CI",
+    #                         buildUrl=os.environ['BITBUCKET_GIT_HTTP_ORIGIN']+'/addon/pipelines/home#!/results/'+os.environ['BITBUCKET_BUILD_NUMBER'],
+    #                         buildName=os.environ['BITBUCKET_BRANCH'])
+    #         with open('{}/{}'.format(report_dir, 'executor.json'), 'w') as _f:
+    #             json.dump(executor, _f)
 
 
 @pytest.fixture(scope="class")
