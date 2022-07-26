@@ -18,7 +18,7 @@ class TestLogin:
 
 
 @pytest.mark.usefixtures("start_session")
-class TestExamination:
+class TestExaminationS:
     def test_examination(self):
         sign_in = SignInPage()
         sign_in.examination()
@@ -35,15 +35,23 @@ class TestSecurity:
 
 
 @pytest.mark.usefixtures("start_session")
-class TestPerson:
-    def test_person(self):
-        test_person = PersonalInfoPage()
-        test_person.tabPersonal()
+class TestExaminationS:
+    def test_examination(self):
+        test_security = SecurityPage()
+        test_security.examination()
 
 
-@pytest.mark.usefixtures("start_session")
-class TestPeople:
-    def test_people(self):
-        test_people = PeopleSharingPage()
-        test_people.tabPeopleSharing()
-        test_people.openContacts()
+
+# @pytest.mark.usefixtures("start_session")
+# class TestPerson:
+#     def test_person(self):
+#         test_person = PersonalInfoPage()
+#         test_person.tabPersonal()
+#
+#
+# @pytest.mark.usefixtures("start_session")
+# class TestPeople:
+#     def test_people(self):
+#         test_people = PeopleSharingPage()
+#         test_people.tabPeopleSharing()
+#         test_people.openContacts()

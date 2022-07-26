@@ -33,6 +33,17 @@ driver.find_element(By.XPATH, '//*[@id="password"]/div[1]/div/div[1]/input').sen
 nextbtn2 = driver.find_element(By.XPATH, '//*[@id="passwordNext"]/div/button/span').click()
 time.sleep(5)
 in_account = driver.find_element(By.XPATH, '//*[@id="yDmH0d"]/c-wiz/div/div[2]/div/c-wiz/c-wiz/div/div[3]/div/div/header/h1').text
-print(type(in_account))
-print(in_account)
-
+# print(type(in_account))
+# print(in_account)
+driver.find_element(By.CSS_SELECTOR, ".HJOYVi11").click()
+time.sleep(2)
+driver.find_element(By.PARTIAL_LINK_TEXT, 'Посмотреть действия').click()
+time.sleep(2)
+driver.find_element(By.PARTIAL_LINK_TEXT, 'Новое').click()
+time.sleep(30)
+# security = driver.find_element(By.XPATH, '//*[@id="yDmH0d"]/c-wiz[4]/div/div[2]/div[2]/c-wiz/div/div/div/div[2]/div[2]/div/h1')
+security = driver.find_element(By.XPATH, '//*[@id="yDmH0d"]/c-wiz[3]/div/div[2]/div[2]/c-wiz/div/div/div/div[2]/div[2]/div/div[2]/div[2]/div[2]/div[1]')
+# security = driver.find_element(By.CSS_SELECTOR, '#yDmH0d > c-wiz:nth-child(22) > div > div:nth-child(2) > div:nth-child(2) > c-wiz > div > div > div > div.s2HbZc.lUJWSb > div.hjhf2e > div > div.COyG6c > div:nth-child(2) > div.FVYsnd > div.C1b4sb')
+secur = security.text
+print(type(secur))
+print(secur)
