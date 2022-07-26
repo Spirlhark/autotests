@@ -96,8 +96,9 @@ class Session:
 
     @classmethod
     def quit(cls):
-        cls._driver.quit()
-        cls._driver = None
+        pass
+        # cls._driver.quit()
+        # cls._driver = None
 
     @classmethod
     def switch_to_default_content(cls):

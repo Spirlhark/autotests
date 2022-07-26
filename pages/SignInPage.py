@@ -1,69 +1,51 @@
 import time
-
+from pages.BasePage import BasePage
 import allure
 from selenium.webdriver.common.by import By
 
 
-class SignIn(object):
+class SignInPage(BasePage):
     locator_dictionary = {
-        "go": (By.XPATH, '/html/body/header/div[1]/div[5]/ul/li[2]/a'),
-        "email": (By.XPATH, '//*[@id="identifierId"]'),
-        "password": (By.CSS_SELECTOR, '#password > div.aCsJod.oJeWuf > div > div.Xb9hP > input'),
-        # "password": (By.XPATH, "//attribute::*[contains(., 'current-password')]/.."),
-        # "password": (By.XPATH, "//attribute::*[contains(., 'YPqjbf')]/.."),
-        # "password": (By.XPATH, "//attribute::*[contains(., 'Введите пароль')]/.."),
-        # "password": (By.XPATH, '//*[@id="password"]/div[1]/div/div[1]/div'),
-        # "password": (By.NAME, "password"),
-        # "password": (By.XPATH, "/html/body/div[1]/div[1]/div[2]/div/div[2]/div/div/div[2]/div/div[1]/div/form/span/section/div/div/div[1]/div[1]/div/div/div/div/div[1]/div/div[1]/input"),
-        # "password": (By.XPATH, '//*[contains(@input,"password")]'),
-        "signin_button_E": (By.XPATH, '//*[@id="identifierNext"]/div/button/span'),
-        "signin_button_P": (By.XPATH, '//*[@id="passwordNext"]/div/button/span')
+        "buttonGoToGoogleAccount": (By.XPATH, '/html/body/header/div[1]/div[5]/ul/li[2]/a'),
+        "fieldEmail": (By.XPATH, '//*[@id="identifierId"]'),
+        "fieldPassword": (By.CSS_SELECTOR, '#password > div.aCsJod.oJeWuf > div > div.Xb9hP > input'),
+        "buttonNextOnPasswordForm": (By.XPATH, '//*[@id="identifierNext"]/div/button/span'),
+        "buttonNextOnHomePage": (By.XPATH, '//*[@id="passwordNext"]/div/button/span'),
+        # "headerHome": (By.CSS_SELECTOR, 'header h1')
+        # "headerHome": (By.PARTIAL_LINK_TEXT, 'Добро пожаловать, Тест Тест!')
+        "headerHome": (By.XPATH, '//*[@id="gb"]/div[2]/div[3]/div[1]/div[2]/div/a')
         }
 
-    def __init__(self, browser, base_url):
-        self.base_url = base_url
-        self.browser = browser
-        self.timeout = 30
-
-    def find_element(self, *loc):
-        return self.browser.find_element(*loc)
-
-    def visit(self, base_url):
-        self.browser.get(base_url)
-
-    @allure.step("Login")
-    def login(self, username, passwd):
+    @allure.step("Go to Sign In")
+    def login(self):
         self.visit(self.base_url)
-        self.find_element(*self.locator_dictionary['go']).click()
-        self.find_element(*self.locator_dictionary['email']).send_keys(username)
-        self.find_element(*self.locator_dictionary['signin_button_E']).click()
-        time.sleep(2)
-        self.find_element(*self.locator_dictionary['password']).send_keys(passwd)
-        self.find_element(*self.locator_dictionary['signin_button_P']).click()
+        self.find_element(*self.locator_dictionary['buttonGoToGoogleAccount']).click()
 
-#
-# class LoginPage:
-#     def __init__(self):
-#         self.go = fined_element(By.XPATH, '/html/body/header/div[1]/div[5]/ul/li[2]/a')
-#         self.username = (By.XPATH, '//*[@id="identifierId"]')
-#         self.password = (By.CSS_SELECTOR, '#password > div.aCsJod.oJeWuf > div > div.Xb9hP > input')
-#         self.sing_in_btn_e = (By.XPATH, '//*[@id="identifierNext"]/div/button/span')
-#         self.sing_in_btn_p = (By.XPATH, '//*[@id="passwordNext"]/div/button/span')
-#
-#     def go(self):
-#         self.go.click()
-#
-#     def enter_username(self, username):
-#         self.username.enter_text(username)
-#
-#     def click_sing_in_e(self):
-#         self.sing_in_btn_e.click()
-#
-#     def enter_password(self, password):
-#         self.password.enter_text(password)
-#
-#     def click_sing_in_p(self):
-#         self.sing_in_btn_p.click()
+    @allure.step("Send Username")
+    def sendEmail(self, username):
+        self.find_element(*self.locator_dictionary['fieldEmail']).send_keys(username)
+        self.find_element(*self.locator_dictionary['buttonNextOnPasswordForm']).click()
+        time.sleep(2)
+
+    @allure.step("Send Password")
+    def sendPassword(self, passwd):
+        self.find_element(*self.locator_dictionary['fieldPassword']).send_keys(passwd)
+        self.find_element(*self.locator_dictionary['buttonNextOnHomePage']).click()
+        time.sleep(2)
+
+    @allure.step('')
+    def сheckHeaderHomePage(self):
+        self.find_element(*self.locator_dictionary['headerHome']).text
+
+
+
+
+
+    # @allure.step("go out browser")
+    # def out(self):
+    #     self.go_out()
+
+
 
 
 
