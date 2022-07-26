@@ -2,6 +2,7 @@ import time
 from pages.BasePage import BasePage
 import allure
 from selenium.webdriver.common.by import By
+from resorses.pars_values import getDataFromConfig
 
 
 class SignInPage(BasePage):
@@ -11,9 +12,7 @@ class SignInPage(BasePage):
         "fieldPassword": (By.CSS_SELECTOR, '#password > div.aCsJod.oJeWuf > div > div.Xb9hP > input'),
         "buttonNextOnPasswordForm": (By.XPATH, '//*[@id="identifierNext"]/div/button/span'),
         "buttonNextOnHomePage": (By.XPATH, '//*[@id="passwordNext"]/div/button/span'),
-        # "headerHome": (By.CSS_SELECTOR, 'header h1')
-        # "headerHome": (By.PARTIAL_LINK_TEXT, 'Добро пожаловать, Тест Тест!')
-        "headerHome": (By.XPATH, '//*[@id="gb"]/div[2]/div[3]/div[1]/div[2]/div/a')
+        "headerHome": (By.XPATH, '//*[@id="yDmH0d"]/c-wiz/div/div[2]/div/c-wiz/c-wiz/div/div[3]/div/div/header/h1')
         }
 
     @allure.step("Go to Sign In")
@@ -33,21 +32,18 @@ class SignInPage(BasePage):
         self.find_element(*self.locator_dictionary['buttonNextOnHomePage']).click()
         time.sleep(2)
 
-    @allure.step('')
-    def сheckHeaderHomePage(self):
-        self.find_element(*self.locator_dictionary['headerHome']).text
+    @allure.step('Check Header Home Page')
+    def examination(self):
+        text = getDataFromConfig('TEXT') + " " + getDataFromConfig('FIRST_NAME') + ' ' + getDataFromConfig(
+            'LAST_NAME') + '!'
+        if self.find_element(*self.locator_dictionary['headerHome']).text == text:
+            return True
+        else:
+            return False
 
-
-
-
-
-    # @allure.step("go out browser")
-    # def out(self):
-    #     self.go_out()
-
-
-
-
-
-
-
+    # @allure.step('Check Header Home Page')
+    # def examination(self):
+    #     if check() == 'Добро пожаловать, Тест Тест!':
+    #         return print('\n' + "!!!!!!!!!!!!!" + '\n' + "Текст совпадает =)" + '\n' + '!!!!!!!!!!!!!')
+    #     else:
+    #         return print("АшеПка")

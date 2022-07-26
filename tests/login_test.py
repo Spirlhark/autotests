@@ -15,37 +15,35 @@ class TestLogin:
         sign_in.login()
         sign_in.sendEmail(getDataFromConfig('EMAIL'))
         sign_in.sendPassword(getDataFromConfig('PASSWORD'))
-        print("??????????")
-        a = sign_in.сheckHeaderHomePage()
-        print(a)
-        text = 'Добро пожаловать, Тест Тест!'
-        if a == text:
-            print("!!!!!!!!!")
-        else:
-            print("$$$$$$$$$")
+
+
+@pytest.mark.usefixtures("start_session")
+class TestExamination:
+    def test_examination(self):
+        sign_in = SignInPage()
+        sign_in.examination()
         time.sleep(2)
 
 
-# @pytest.mark.usefixtures("start_session")
-# class TestSecurity:
-#     def test_security(self):
-#         test_security = SecurityPage()
-#         test_security.tabSecurity()
-#         test_security.openRecentSecurity()
-#         test_security.openActivity()
-#
-#
-# @pytest.mark.usefixtures("start_session")
-# class TestPerson:
-#     def test_person(self):
-#         test_person = PersonalInfoPage()
-#         test_person.tabPersonal()
-#
-#
-# @pytest.mark.usefixtures("start_session")
-# class TestPeople:
-#     def test_people(self):
-#         test_people = PeopleSharingPage()
-#         test_people.tabPeopleSharing()
-#         test_people.openContacts()
-#
+@pytest.mark.usefixtures("start_session")
+class TestSecurity:
+    def test_security(self):
+        test_security = SecurityPage()
+        test_security.tabSecurity()
+        test_security.openRecentSecurity()
+        test_security.openActivity()
+
+
+@pytest.mark.usefixtures("start_session")
+class TestPerson:
+    def test_person(self):
+        test_person = PersonalInfoPage()
+        test_person.tabPersonal()
+
+
+@pytest.mark.usefixtures("start_session")
+class TestPeople:
+    def test_people(self):
+        test_people = PeopleSharingPage()
+        test_people.tabPeopleSharing()
+        test_people.openContacts()
