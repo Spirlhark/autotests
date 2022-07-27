@@ -1,8 +1,8 @@
-import time
 from pages.BasePage import BasePage
 import allure
 from selenium.webdriver.common.by import By
 from resorses.pars_values import getDataFromConfig
+import unittest
 
 
 class SignInPage(BasePage):
@@ -24,26 +24,14 @@ class SignInPage(BasePage):
     def sendEmail(self, username):
         self.find_element(*self.locator_dictionary['fieldEmail']).send_keys(username)
         self.find_element(*self.locator_dictionary['buttonNextOnPasswordForm']).click()
-        time.sleep(2)
 
     @allure.step("Send Password")
     def sendPassword(self, passwd):
         self.find_element(*self.locator_dictionary['fieldPassword']).send_keys(passwd)
         self.find_element(*self.locator_dictionary['buttonNextOnHomePage']).click()
-        time.sleep(2)
 
     @allure.step('Check Header Home Page')
     def examination(self):
-        text = getDataFromConfig('TEXT') + " " + getDataFromConfig('FIRST_NAME') + ' ' + getDataFromConfig(
+        text = getDataFromConfig('GREETING') + " " + getDataFromConfig('FIRST_NAME') + ' ' + getDataFromConfig(
             'LAST_NAME') + '!'
-        if self.find_element(*self.locator_dictionary['headerHome']).text == text:
-            return True
-        else:
-            return False
-
-    # @allure.step('Check Header Home Page')
-    # def examination(self):
-    #     if check() == 'Добро пожаловать, Тест Тест!':
-    #         return print('\n' + "!!!!!!!!!!!!!" + '\n' + "Текст совпадает =)" + '\n' + '!!!!!!!!!!!!!')
-    #     else:
-    #         return print("АшеПка")
+        assert self.find_element(*self.locator_dictionary['headerHome']).text == text

@@ -1,5 +1,3 @@
-import time
-
 import pytest
 from pages.SignInPage import SignInPage
 from pages.SecurityPage import SecurityPage
@@ -18,11 +16,10 @@ class TestLogin:
 
 
 @pytest.mark.usefixtures("start_session")
-class TestExaminationS:
-    def test_examination(self):
+class TestLoginExaminationHeaderHome:
+    def test_examination_header_home(self):
         sign_in = SignInPage()
         sign_in.examination()
-        time.sleep(2)
 
 
 @pytest.mark.usefixtures("start_session")
@@ -35,23 +32,36 @@ class TestSecurity:
 
 
 @pytest.mark.usefixtures("start_session")
-class TestExaminationS:
-    def test_examination(self):
+class TestSecurityExaminationFormProfile:
+    def test_examination_form_profile(self):
         test_security = SecurityPage()
         test_security.examination()
 
 
+@pytest.mark.usefixtures("start_session")
+class TestPerson:
+    def test_person(self):
+        test_person = PersonalInfoPage()
+        test_person.tabPersonal()
 
-# @pytest.mark.usefixtures("start_session")
-# class TestPerson:
-#     def test_person(self):
-#         test_person = PersonalInfoPage()
-#         test_person.tabPersonal()
-#
-#
-# @pytest.mark.usefixtures("start_session")
-# class TestPeople:
-#     def test_people(self):
-#         test_people = PeopleSharingPage()
-#         test_people.tabPeopleSharing()
-#         test_people.openContacts()
+
+@pytest.mark.usefixtures("start_session")
+class TestPersonExaminationPersonalInfo:
+    def test_examination_personal_info(self):
+        test_person = PersonalInfoPage()
+        test_person.examination()
+
+
+@pytest.mark.usefixtures("start_session")
+class TestPeople:
+    def test_people(self):
+        test_people = PeopleSharingPage()
+        test_people.tabPeopleSharing()
+        test_people.openContacts()
+
+
+@pytest.mark.usefixtures("start_session")
+class TestPeopleExaminationOpenContactsPage:
+    def test_examination_open_contact_page(self):
+        test_people = PeopleSharingPage()
+        test_people.examination()

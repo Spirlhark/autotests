@@ -68,7 +68,9 @@ class Session:
             driver = webdriver.Safari()
         else:
             assert False, f'Driver for end browser {cls.browser} not defined'
-        driver.set_window_size(1400, 1200)
+        # driver.set_window_size(1400, 1200)
+        driver.maximize_window()
+        driver.implicitly_wait(20)
         return driver
 
     @classmethod
